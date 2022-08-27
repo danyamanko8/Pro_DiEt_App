@@ -12,7 +12,7 @@ This is an app for tracking your daily eaten meal calories and nutrients. Users 
 
 The setups steps expect following tools installed on the system.
 
-- [Github](https://github.com)
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - Ruby [3.0.1](https://www.ruby-lang.org/en/news/2021/04/05/ruby-3-0-1-released/)
 - Rails [7.0.3.1](https://rubygems.org/gems/rails/versions/7.0.3.1)
 
