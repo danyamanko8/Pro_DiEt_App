@@ -1,0 +1,2 @@
+class DietsController < PrivateApiController
+end
