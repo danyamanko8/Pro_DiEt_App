@@ -3,5 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :lockable, :confirmable
 
   has_many :diets
-  
+  has_many :meals
 end
