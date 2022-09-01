@@ -74,4 +74,4 @@ end
 gem 'devise'
 gem 'httparty'
 gem 'dotenv'
-gem 'zeitwerk'
+gem 'pundit'
