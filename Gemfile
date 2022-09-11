@@ -69,9 +69,17 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', require: false
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
 end
 
 gem 'devise'
 gem 'httparty'
 gem 'dotenv'
 gem 'pundit'
+
+gem 'rspec'
+gem 'sidekiq'
