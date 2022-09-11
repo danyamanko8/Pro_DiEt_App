@@ -1,0 +1,83 @@
+<style>
+body {
+ background: radial-gradient(circle at 10% 20%, rgba(91, 173, 254, 0.46) 0%, rgba(91, 224, 254, 0.46) 47.2%, rgba(170, 254, 235, 0.43) 90%);
+}
+
+h1 {
+  color: #800080;
+  font-family: Marker Felt, fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+
+.name {
+  color: #D2691E;
+  font-family: Marker Felt, fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+.diet {
+  color: #D2691E;
+  font-family: Marker Felt, fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+ }
+
+  .diet {
+    color: #D2691E;
+    font-family: Marker Felt, fantasy;
+    margin-top: 1rem;
+    padding-bottom: 0.1rem;
+    text-align: center;
+  }
+
+  .components {
+      color: #D2691E;
+      font-family: Marker Felt, fantasy;
+      margin-top: 1rem;
+      padding-bottom: 0.1rem;
+      text-align: center;
+}
+.button {
+	background-color:#44c767;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+  margin: auto;
+  display: block;
+}
+.button:hover {
+	background-color:#5cbf2a;
+}
+
+  </style>
+<div>
+      <h1>Create your diet</h1>
+       <div class="name"><%= form_for @diet do |f| %>
+        <%= f.label :name, "Your diet name: " %>
+        <%= f.text_field :name%>
+        </div>
+        <br>
+       <div class="diet">
+        <%= f.label :description, "Description: " %>
+        <%= f.text_field :description %>
+        </div>
+        <br>
+    <div class="components">
+        <%= f.label :components, "Components: " %>
+        <%= f.text_field :components %>
+        </div>
+        <br>
+        <%= f.submit "Create Your Diet", class: "button" %>
+      <% end %>
+ </div>

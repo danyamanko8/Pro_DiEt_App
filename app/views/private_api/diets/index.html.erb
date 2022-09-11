@@ -1,0 +1,61 @@
+<style>
+body {
+background: radial-gradient(circle at 10% 20%, rgb(215, 223, 252) 0%, rgb(255, 255, 255) 0%, rgb(215, 223, 252) 84%);
+}
+h1 {
+  color: #800080;
+  font-family: Marker Felt, fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+table, th, td{
+  border: 4px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+.table {
+  color: #4682B4;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+.headers {
+  color: #00008B;
+  font-family: fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+
+</style>
+
+
+
+
+
+
+
+<h1>Diets: </h1>
+<% @diets.each do |diet| %>
+
+<table class="table">
+  <thead>
+    <tr class="headers">
+      <th scope="col">Diet name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Components</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"> <%= diet.name %></th>
+      <br>
+      <br>
+      <td><%= diet.description %></td>
+      <td><%= diet.components %></td>
+    </tr>
+  </tbody>
+</table>
+  <% end %>
