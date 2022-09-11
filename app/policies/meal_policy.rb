@@ -16,6 +16,14 @@ class MealPolicy < ApplicationPolicy
   end
 
   def update?
-    Meal.find(params[:id]).user_id == current_user.id
+    @record.user_id == user.id
+  end
+
+  def create?
+    user.present?
+  end
+
+  def destroy?
+    @record.user_id == user.id
   end
 end

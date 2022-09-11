@@ -8,7 +8,7 @@ class DietPolicy < ApplicationPolicy
 
     def resolve
       default_diets = scope.without_owner
-      default_diets.merge.where(owner_id: user.id) if user
+      default_diets.merge(scope.where(owner_id: user.id)) if user
     end
 
     private
@@ -31,7 +31,7 @@ class DietPolicy < ApplicationPolicy
   private
 
   def user_owner?
-    @diet.owner_id == user.id
+    @record.owner_id == user.id
   end
 
 end
