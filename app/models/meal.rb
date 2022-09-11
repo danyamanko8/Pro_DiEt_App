@@ -1,4 +1,4 @@
 class Meal < ApplicationRecord
   has_one :user
-  include Authorship
+  validates_presence_of :title
 end

@@ -1,51 +1,67 @@
-class DietsController < PrivateApiController
-  before_action :set_diet, only: %i[ destroy edit update]
-  before_action :authorize_diet!
+module PrivateApi
+  class DietsController < PrivateApiController
+    include MealPropertiesParser
+
+    before_action :set_diet, only: %i[ destroy edit update]
+    before_action :authorize_diet!
 
 
-  def index
-    @diets = policy_scope(Diet)
-  end
+    def index
+      @diets = policy_scope(Diet)
+    end
 
-  def show
-    @diet = policy_scope(Diet).find(params[:id])
-  end
+    def show
+      @diet = Diet.find(params[:id])
+    end
 
-  def new
-    @diet = Diet.new(diet_params)
-  end
+    def new
+      @diet = Diet.new
+    end
 
-  def create
-    @diet = Diet.new(diet_params)
-    calculate_diet_properties
-    @diet.save
-  end
+    def create
+      @diet = Diet.new(diet_params)
+      calculate_diet_properties
+      @diet.owner_id = current_user.id
+      @diet.save
 
-  def edit
-  end
+      redirect_to diet_path(@diet)
+    end
 
-  def update
-    @diet.update(diet_params)
-  end
+    def edit
+    end
 
-  def destroy
-    @diet.delete
-  end
+    def update
+      @diet.update(diet_params)
+      calculate_diet_properties
+      @diet.save
 
-  private
+      redirect_to @diet
+    end
 
-  def calculate_diet_properties
-  end
+    def destroy
+      @diet.delete
 
-  def diet_params
-    params.require(:diet).permit(:name, :components, :description)
-  end
+      redirect_to diets_path
+    end
 
-  def set_diet
-    @diet = Diet.find(params[:id])
-  end
+    private
 
-  def authorize_diet!
-    authorize(@diet || Diet)
+    def calculate_diet_properties
+      data = fetch_meal_properties(diet_params[:components])
+      @diet.total_calories = data.fetch(:calories)
+      @diet.nutrients = data.fetch(:nutrients)
+    end
+
+    def diet_params
+      params.require(:diet).permit(:name, :components, :description)
+    end
+
+    def set_diet
+      @diet = Diet.find(params[:id])
+    end
+
+    def authorize_diet!
+      authorize(@diet || Diet)
+    end
   end
 end
