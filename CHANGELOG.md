@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.0.5] - 2022-09-11
+## [0.0.6] - 2022-09-11
 ### Updated
 - controllers with new actions and added integration with external API
 - policies
