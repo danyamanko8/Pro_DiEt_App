@@ -41,21 +41,20 @@ table, th, td{
 	text-decoration:none;
 	text-shadow:0px 1px 0px #2f6627;
   margin: auto;
+  text-align: center;
 }
 .button:hover {
 	background-color:#5cbf2a;
 }
-
 </style>
 
+<%= button_to "Add Meal", new_meal_path, method: :get, class:"button" %>
 
-
-
-
-
-
-<h1>Diets: </h1>
-<%= link_to "Create New Diet", new_diet_path, class:"button"%>
-<% @diets.each do |diet| %>
-<%= render partial: 'diet', object: diet%>
-  <% end %>
+<h1>Meals: </h1>
+<%= link_to "ONE DAY", meals_path(from: 1.day.ago), class: 'button' %>
+<%= link_to "ONE WEEK", meals_path(from: 1.week.ago), class: 'button' %>
+<%= link_to "ONE MONTH", meals_path(from: 1.month.ago), class: 'button' %>
+<%= link_to "ONE YEAR", meals_path(from: 1.year.ago), class: 'button' %>
+<% @meals.each do |meal| %>
+<%= render partial: 'meal', object: meal%>
+<% end %>

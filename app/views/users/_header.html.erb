@@ -1,3 +1,20 @@
+<style>
+  .navbar-brand {
+    color: #800080;
+    font-family: Marker Felt, fantasy;
+    margin-top: 1rem;
+    padding-bottom: 0.1rem;
+    text-align: center;
+  }
+  .nav-link{
+    color: #00008B;
+    font-family: fantasy;
+    margin-top: 1rem;
+    padding-bottom: 0.1rem;
+    text-align: center;
+  }
+</style>
+
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,16 +24,20 @@
       <a class="navbar-brand" >Pro DiEt App</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-          <%= link_to "Main Page", root_path, class:"nav-link active"%>
-          <%= link_to "My Diets", diets_path, class:"nav-link"%>
-          <%= link_to "Create New Diet", new_diet_path, class:"nav-link"%>
+          <%= link_to "Main Page", root_path, class:"nav-link "%>
           <% if user_signed_in? %>
-             <%= current_user.email %>
-             <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-             <%= link_to 'Account Settings', edit_user_registration_path %>
+            <%= link_to "My Diets", diets_path, class:"nav-link"%>
+            <%= link_to "My Meals", meals_path, class:"nav-link"%>
           <% else %>
-            <%= link_to 'Log in', new_user_session_path %>
-            <%= link_to 'Sign up', new_user_registration_path %>
+            <%= link_to "Public Diets", public_diets_path, class:"nav-link "%>
+         <% end %>
+          <% if user_signed_in? %>
+             <div class = 'nav-link'><%= current_user.email %></div>
+             <%= link_to 'Log out', destroy_user_session_path, method: :delete, class:"nav-link " %>
+             <%= link_to 'Account Settings', edit_user_registration_path, class:"nav-link "%>
+          <% else %>
+            <%= link_to 'Log in', new_user_session_path, class:"nav-link " %>
+            <%= link_to 'Sign up', new_user_registration_path, class:"nav-link " %>
           <% end %>
 
       </ul>

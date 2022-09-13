@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<p>Hello, <%= @user.email %>!</p>
+<p>Here is your report for <%= @diet.name %>!</p>
+<p>
+  Diet details<br>
+  --------------------------
+</p>
+<p>Description: <%= @diet.description %></p>
+<p>Components: <%= @diet.components %></p>
+<p>Calories: <%= @diet.total_calories %></p>
+<p>
+  Nutrients:<br>
+  ----------
+</p>
+<% @diet.nutrients.except('name').each do |key, v| %>
+  <p><%= key.humanize %>: <%= v.to_s %></p>
+<% end %>
+</body>
+</html>

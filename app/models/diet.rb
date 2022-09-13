@@ -1,5 +1,5 @@
 class Diet < ApplicationRecord
-  has_one :owner, class_name: 'User', foreign_key: 'owner_id'
+  belongs_to :owner, class_name: 'User', foreign_key: 'owner_id', optional: true
 
   validates_presence_of :name
   validates_presence_of :components

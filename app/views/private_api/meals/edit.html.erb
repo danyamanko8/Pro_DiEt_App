@@ -2,6 +2,7 @@
 body {
  background: radial-gradient(circle at 10% 20%, rgba(91, 173, 254, 0.46) 0%, rgba(91, 224, 254, 0.46) 47.2%, rgba(170, 254, 235, 0.43) 90%);
 }
+
 h1 {
   color: #800080;
   font-family: Marker Felt, fantasy;
@@ -9,22 +10,15 @@ h1 {
   padding-bottom: 0.1rem;
   text-align: center;
 }
-.name {
-  color: #D2691E;
-  font-family: Marker Felt, fantasy;
-  margin-top: 1rem;
-  padding-bottom: 0.1rem;
-  text-align: center;
-}
 
-.description {
+.title {
   color: #D2691E;
   font-family: Marker Felt, fantasy;
   margin-top: 1rem;
   padding-bottom: 0.1rem;
   text-align: center;
 }
-.components{
+.eat_time {
   color: #D2691E;
   font-family: Marker Felt, fantasy;
   margin-top: 1rem;
@@ -32,7 +26,7 @@ h1 {
   text-align: center;
 }
 .button {
-  background-color:#44c767;
+	background-color:#44c767;
 	border-radius:28px;
 	border:1px solid #18ab29;
 	display:inline-block;
@@ -50,24 +44,19 @@ h1 {
 	background-color:#5cbf2a;
 }
 
-</style>
-
-
-
-
-
-<h1>Edit your diet</h1>
-<div class="name"><%= form_for @diet do |f| %>
- <%= f.label :name, "Your diet name: " %>
- <%= f.text_field :name%>
-</div>
-
-  <div class="description"<%= f.label :description, "Description: " %>
-  <%= f.text_field :description %>
-  </div>
-  <div class="components"<%= f.label :components, "Components: " %>
-  <%= f.text_area :components %>
-   </div>
-   <br>
-  <%= f.submit "Update Your Diet", class: "button" %>
-<% end %>
+  </style>
+<div>
+      <h1>Edit your meal</h1>
+       <div class="title"><%= form_for @meal do |f| %>
+        <%= f.label :title, "Your Meal Components: " %>
+        <%= f.text_area :title%>
+        </div>
+        <br>
+       <div class="eat_time">
+        <%= f.label :eat_time, "Eat Time: " %>
+        <%= f.datetime_select :eat_time %>
+        </div>
+        <br>
+        <%= f.submit "Update Your Meal", class: "button" %>
+      <% end %>
+ </div>

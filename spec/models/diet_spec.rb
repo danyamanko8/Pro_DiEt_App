@@ -13,7 +13,7 @@ RSpec.describe Diet, type: :model do
   end
 
   describe 'relations' do
-      it { is_expected.to have_one(:owner).class_name('User')}
+      it { is_expected.to belong_to(:owner).class_name('User')}
   end
 
   describe 'validations' do

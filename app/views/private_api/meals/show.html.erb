@@ -8,6 +8,8 @@ h1 {
   margin-top: 1rem;
   padding-bottom: 0.1rem;
   text-align: center;
+  border: 3px solid #008B8B;
+  padding: 3px;
 }
 h4 {
   color: #008B8B;
@@ -53,11 +55,17 @@ p{
 }
 </style>
 
-<h1><%=@diet.name %></h1>
-    <h4>Description: <%= @diet.description %></h4>
-    <h4 class="all">Components: <%= @diet.components %></h4>
-  <h4>total_calories: <%= @diet.total_calories %></h4>
-  <p class="nutrients"><b>Nutrients:</b></p>
-  <% @diet.nutrients.except('name').each do |key, v| %>
-    <p><%= key.humanize %>: <%= v.truncate(2).to_s %></p>
-  <% end %>
+<h1><%=@meal.title %></h1>
+    <p class="nutrients"><b>Nutrients:</b></p>
+    <% @meal.nutrients.except('name').each do |key, v| %>
+      <p><%= key.humanize %>: <%= v.truncate(2).to_s %></p>
+    <% end %>
+    <p class="calories"><b>Calories:</b></p>
+  <h4><%= @meal.calories %></h4>
+  <p class="grams"><b>Grams:</b></p>
+  <h4><%= @meal.grams.truncate(2) %></h4>
+
+
+
+
+  <%= button_to "Edit Meal", meal_path, method: :put, class:"button" %>

@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -37,6 +36,10 @@ class ApplicationPolicy
     false
   end
 
+  def scope
+    Pundit.policy_scope!(user, record.class)
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
@@ -48,7 +51,7 @@ class ApplicationPolicy
     end
 
     private
-
+    
     attr_reader :user, :scope
   end
 end

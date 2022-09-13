@@ -1,6 +1,7 @@
 require 'simplecov'
 require 'database_cleaner'
 require 'spec_helper'
+require 'factory_bot'
 
 require_relative '../config/environment'
 

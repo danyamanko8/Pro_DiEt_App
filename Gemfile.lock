@@ -105,12 +105,21 @@ GEM
     digest (3.1.0)
     docile (1.4.0)
     dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.11.0)
+    et-orbi (1.2.7)
+      tzinfo
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    ffaker (2.21.0)
+    fugit (1.6.0)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
     httparty (0.20.0)
@@ -127,6 +136,10 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -166,6 +179,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.2.0)
       activesupport (>= 3.0.0)
+    raabro (1.4.0)
     racc (1.6.0)
     rack (2.2.4)
     rack-test (2.0.2)
@@ -238,6 +252,9 @@ GEM
       connection_pool (>= 2.2.5)
       rack (~> 2.0)
       redis (>= 4.5.0, < 5)
+    sidekiq-cron (1.7.0)
+      fugit (~> 1)
+      sidekiq (>= 4.2.1)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -290,20 +307,24 @@ DEPENDENCIES
   database_cleaner
   debug
   devise
-  dotenv
+  dotenv-rails
   factory_bot_rails
+  ffaker
   httparty
   importmap-rails
   jbuilder
+  letter_opener (~> 1.4, >= 1.4.1)
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
   rails (~> 7.0.3, >= 7.0.3.1)
+  redis
   rspec
   rspec-rails
   selenium-webdriver
   shoulda-matchers (~> 5.0)
   sidekiq
+  sidekiq-cron
   simplecov
   sprockets-rails
   stimulus-rails

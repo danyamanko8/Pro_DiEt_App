@@ -56,6 +56,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -74,12 +75,15 @@ group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'ffaker'
 end
 
 gem 'devise'
 gem 'httparty'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'pundit'
 
 gem 'rspec'
+gem 'redis'
 gem 'sidekiq'
+gem "sidekiq-cron"

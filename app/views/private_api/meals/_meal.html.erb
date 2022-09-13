@@ -1,0 +1,56 @@
+<style>
+body {
+background: radial-gradient(circle at 10% 20%, rgb(215, 223, 252) 0%, rgb(255, 255, 255) 0%, rgb(215, 223, 252) 84%);
+}
+h1 {
+  color: #800080;
+  font-family: Marker Felt, fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+table, th, td{
+  border: 4px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+.table {
+  color: #4682B4;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+.headers {
+  color: #00008B;
+  font-family: fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+
+</style>
+
+<table class="table">
+  <thead>
+    <tr class="headers">
+      <th scope="col">Meal title</th>
+      <th scope="col">Calories</th>
+      <th scope="col">Nutrients</th>
+      <th scope="col">Eat Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"> <%= meal.title %></th>
+      <br>
+      <br>
+      <td><%= meal.calories %></td>
+      <td><% meal.nutrients.except('name').each do |key, v| %>
+        <%= key.humanize %>: <b><%= v.truncate(2).to_s %></b>
+      <% end %></td>
+      <td><%= meal.eat_time.strftime("%B %d, %l:%M %P") %></td>
+          <%= link_to "View Meal", meal_path(meal.id), method: :get, class:"button" %>
+    </tr>
+  </tbody>
+</table>

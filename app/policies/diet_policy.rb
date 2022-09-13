@@ -1,6 +1,6 @@
 class DietPolicy < ApplicationPolicy
-
   class Scope
+
     def initialize(user, scope)
       @user  = user
       @scope = scope
@@ -8,12 +8,16 @@ class DietPolicy < ApplicationPolicy
 
     def resolve
       default_diets = scope.without_owner
-      default_diets.merge(scope.where(owner_id: user.id)) if user
+      default_diets.or(scope.where(owner_id: user.id)) if user
     end
 
     private
 
     attr_reader :user, :scope
+  end
+
+  def show?
+    scope.where(id: @record.id).exists?
   end
 
   def update?
@@ -28,10 +32,13 @@ class DietPolicy < ApplicationPolicy
     user_owner?
   end
 
+  def send_report?
+    show?
+  end
+
   private
 
   def user_owner?
     @record.owner_id == user.id
   end
-
 end

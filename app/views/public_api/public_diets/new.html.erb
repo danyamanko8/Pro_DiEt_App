@@ -62,8 +62,8 @@ h1 {
 
   </style>
 <div>
-      <h1>Create your diet</h1>
-       <div class="name"><%= form_for @diet do |f| %>
+      <h1>Create Your Test Diet</h1>
+       <div class="name"><%= form_for @diet, url: public_diet_create_path do |f| %>
         <%= f.label :name, "Your diet name: " %>
         <%= f.text_field :name%>
         </div>
@@ -78,6 +78,6 @@ h1 {
         <%= f.text_area :components %>
         </div>
         <br>
-        <%= f.submit "Create Your Diet", class: "button" %>
+        <%= f.submit "Create & Save", class: "button" %>
       <% end %>
  </div>
