@@ -65,7 +65,4 @@ p{
   <p class="grams"><b>Grams:</b></p>
   <h4><%= @meal.grams.truncate(2) %></h4>
 
-
-
-
-  <%= button_to "Edit Meal", meal_path, method: :put, class:"button" %>
+  <%= button_to "Edit Meal", edit_meal_path, method: :get, class:"button" %>

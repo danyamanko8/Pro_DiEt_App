@@ -4,21 +4,90 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<p>Hello, <%= @user.email %>!</p>
+<h4>Hello, <%= @user.email %>!</h4>
 <p>Here is your report for <%= @diet.name %>!</p>
-<p>
-  Diet details<br>
-  --------------------------
-</p>
-<p>Description: <%= @diet.description %></p>
-<p>Components: <%= @diet.components %></p>
+<h1>Diet details: </h1>
+<h4>Description: <%= @diet.description %></h4>
+<h4>Components: <%= @diet.components %></h4>
 <p>Calories: <%= @diet.total_calories %></p>
-<p>
-  Nutrients:<br>
-  ----------
-</p>
-<% @diet.nutrients.except('name').each do |key, v| %>
-  <p><%= key.humanize %>: <%= v.to_s %></p>
+<!--<p>-->
+<!--  Nutrients:<br>-->
+<!--  ------------>
+<!--</p>-->
+<%# @diet.nutrients.except('name').each do |key, v| %>
+<!--  <p><%#= key.humanize %>: <%#= v.to_s %></p>-->
+<%# end %>
+
+<h4>Diet total calories: <%= @diet.total_calories %></h4>
+<h4>Your eaten calories during the last day: <%= @meals.reduce(0) { |acc, el| acc +  el.calories } %></h4>
+
+<h1>Your meals: </h1>
+
+<% @meals.each do |meal| %>
+
+<table class="table">
+  <thead>
+    <tr class="headers">
+      <th scope="col">Meal title</th>
+      <th scope="col">Calories</th>
+      <th scope="col">Nutrients</th>
+      <th scope="col">Eat Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"> <%= meal.title %></th>
+      <br>
+      <br>
+      <td><%= meal.calories %></td>
+      <td><% meal.nutrients.except('name').each do |key, v| %>
+        <%= key.humanize %>: <b><%= v.truncate(2).to_s %></b>
+      <% end %></td>
+      <td><%= meal.eat_time.strftime("%B %d, %l:%M %P") %></td>
+    </tr>
+  </tbody>
+</table>
+
 <% end %>
 </body>
+
+<style>
+body {
+background: radial-gradient(circle at 10% 20%, rgb(215, 223, 252) 0%, rgb(255, 255, 255) 0%, rgb(215, 223, 252) 84%);
+}
+h1 {
+  color: #800080;
+  font-family: Marker Felt, fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+h4 {
+    color: #008B8B;
+    font-family: Gill Sans, sans-serif;
+    margin-top: 1rem;
+    padding-bottom: 0.1rem;
+    text-align: center;
+}
+table, th, td{
+  border: 4px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+.table {
+  color: #4682B4;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+.headers {
+  color: #00008B;
+  font-family: fantasy;
+  margin-top: 1rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+}
+
+</style>
 </html>
